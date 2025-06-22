@@ -1,0 +1,52 @@
+UserContextApi
+********************************************************************************************************************
+import React,{createContext} from "react";
+
+export let UserContext=createContext();
+
+function UserContextApi({children}){
+    return(
+        <UserContext.Provider value="Rohit">
+            {children}
+        </UserContext.Provider>
+    )
+}
+
+export default UserContextApi
+****************************************************************************************************************
+app.js
+****************************************************************************************************************
+import React from 'react';
+import UserContextApi from './ContextApi/UserContextApi.js'; 
+import Child from "../src/components/Child1.jsx";
+import { BrowserRouter} from 'react-router-dom';
+
+const App = () => {
+return (
+    <>
+      <BrowserRouter>
+        <UserContextApi>
+          <Child></Child>
+        </UserContextApi>
+      </BrowserRouter>
+    </>
+  )
+}
+
+export default App
+**********************************************************************************************************************
+UserContextApi.js
+**********************************************************************************************************************
+import React,{createContext} from "react";
+
+export let UserContext=createContext();
+
+function UserContextApi({children}){
+    return(
+        <UserContext.Provider value="Rohit">
+            {children}
+        </UserContext.Provider>
+    )
+}
+
+export default UserContextApi

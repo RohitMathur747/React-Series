@@ -1,0 +1,57 @@
+Date - 31-03-2023
+
+1) Passing String as a Argument in Another Components
+///////////////////////////////////////////////////////////////////////////////////////////
+
+App.js
+///////////////////////////////////////////////////////////
+
+import React from "react";
+import Navbar from './Navbar';
+
+function App() {
+  return (
+    <div>
+      <Navbar name="siri" />
+    </div>
+  );
+}
+
+export default App;
+
+////////////////////////////////////////////////////////////////////////////////////
+Navbar.jsx
+//////////////////////////////////////////////////////////////////////////////
+
+import React from "react";
+import Logo from "./components/Logo";
+import Menu from "./components/Menu";
+
+
+function Navbar(a){
+    return (<div>
+        <h1>hi i am a functional based component</h1>
+        <h1>My Name is {a.name}</h1>
+        <Logo></Logo>
+        <Menu savitha={a.name}/>
+    </div>
+    )
+}
+export default Navbar;
+
+////////////////////////////////////////////////////////////////////////////////////
+Menu.jsx
+/////////////////////////////////////////////////////////////////////////////////
+import React from 'react'
+
+const Menu = (a) => {
+    console.log(a)
+    return (
+    <div>
+        <h1>I am Menu</h1>
+        <h1>{a.savitha}</h1>
+    </div>
+    )
+}
+
+export default Menu

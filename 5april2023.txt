@@ -1,0 +1,38 @@
+1) Props Drilling productnam,img,price
+****************************************************************************************************************
+Navbar.jsx
+****************************************************************************************************************
+import React from 'react'
+
+const Navbar = (props) => { 
+    console.log(props)
+return (
+    <div>
+        <h1 style={{backgroundColor:"grey"}}>Name:-{props.products.name}</h1>
+        <img src={props.products.img} alt=""></img>
+        <h1 style={{color:"red"}}>Price:-{props.products.price}</h1>
+        {console.log(props.products)}
+    </div>
+    )
+}
+
+export default Navbar
+*******************************************************************************************************************
+App.js
+*******************************************************************************************************************
+import React from 'react'
+import Navbar from './Navbar'
+
+const App = () => { 
+  let products={
+    name:"mobile",
+    img:"https://www.91-img.com/gallery_images_uploads/d/7/d7cf5e2b1a3a3dfcca8a8dbb524fb11a8fb1c8e8.JPG?tr=h-550,w-0,c-at_max",
+    price:"30000"
+  }
+  return (
+    <div>
+      <Navbar products={products}></Navbar>
+    </div>
+  )
+}
+export default App

@@ -1,0 +1,151 @@
+////////////////////////////////////////////////////////////
+App.js
+///////////////////////////////////////////////////////////
+1) message print
+/////////////////////////////////////////////////////////
+import React from 'react'
+import Navbar from './Navbar'
+
+function App() {
+
+  function message(){
+    alert("message function is called")
+  }
+
+  return (
+    <div>
+      <Navbar value={message}/>
+    </div>
+  );
+}
+
+export default App;
+//////////////////////////////////////////////////////////////
+props.jsx
+///////////////////////////////////////////////////////////////
+import React from "react";
+
+function Navbar(a){
+    console.log(a);
+    return (
+    <div>
+        <button onClick={a.value}>Click Here</button>   
+    </div>
+    )
+}
+export default Navbar;
+
+////////////////////////////////////////////////////////////////
+2)props method
+/////////////////////////////////////////////////////////////////
+props.js
+/////////////////////////////////////////////////////////////////
+import React from 'react'
+
+const Navbar = ({data}) => {
+    console.log(data)
+  return (
+    <div>
+      {
+        data.map(a=>{
+            return <h1>{a}</h1>
+        })
+      }
+    </div>
+  )
+}
+
+export default Navbar
+/////////////////////////////////////////////////////////////////
+App.js
+/////////////////////////////////////////////////////////////
+import React from 'react'
+import Navbar from './Navbar'
+
+const App = () => {
+  let flowers = ["Lotus","Rose","Sunflower","Lilly","Jasmine"]
+  return (
+    <div>
+        <Navbar data={flowers}/>      
+    </div>
+  )
+}
+
+export default App
+/////////////////////////////////////////////////////
+3) class based components using props
+////////////////////////////////////////////////////
+props.jsx
+////////////////////////////////////////////
+import React, { Component } from "react";
+
+class props extends Component {
+  render() {
+    return (
+      <div>
+        <h2>Child Component</h2>
+        <p>{this.props.message}</p>
+      </div>
+    );
+  }
+}
+
+export default props;
+///////////////////////////////////////////////////////////
+App.js
+///////////////////////////////////////////////////////////
+import React, { Component } from "react";
+import Data from "./props";
+
+class Parent extends Component {
+  render() {
+    const message = "hello parent";
+    return (
+      <div>
+        <Data message={message} />
+      </div>
+    );
+  }
+}
+
+export default Parent;
+
+///////////////////////////////////////////////////////////////////////
+4) call data function using button
+///////////////////////////////////////////////////////////////////
+App.js
+///////////////////////////////////////////////////////
+import React,{Component} from "react";
+import Navbar from "./Navbar";
+
+class App extends Component{
+
+  data=()=>{
+    alert("data function is called!!!")
+  }
+  render(){
+    return (
+      <div>
+        <Navbar name={this.data}/>
+      </div>
+    )
+  }
+}
+export default App
+///////////////////////////////////////////////////////////
+Navbar.jsx
+///////////////////////////////////////////////////////////
+import React from 'react'
+
+class Navbar extends React.Component{
+    render(){
+        return(
+        <div>
+            {console.log(this.props)}
+            <button onClick={this.props.name}>Call</button>
+        </div>
+        )
+    }
+}
+
+export default Navbar

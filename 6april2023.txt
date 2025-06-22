@@ -1,0 +1,169 @@
+*****************************************************************************************************
+1) use state changing name by click button
+******************************************************************************************************
+App.js
+*****************************************************************************************************
+import React from 'react'
+import Navbar from './Navbar'
+
+const App = () => { 
+  return (
+    <div>
+      <Navbar></Navbar>
+    </div>
+  )
+}
+export default App
+*******************************************************************************************************
+Navbar.jsx
+*******************************************************************************************************
+import React,{useState} from 'react'
+
+const Navbar = () => { 
+    let [name,setname]=useState("Rohit");
+
+    let changedata=()=>{
+        setname("Rachit")
+    }
+return (
+    <div>
+        <h1>{name}</h1>
+        <button onClick={changedata}>Click Here</button>
+    </div>
+    )
+}
+
+export default Navbar
+**************************************************************************************************************
+2) set count increment and decrement using set count
+*************************************************************************************************************
+Home.jsx
+************************************************************************************************************
+import React, { useState } from 'react'
+
+const Home = () => {
+    let [count, setcount]=useState(0)
+    let increment=()=>{
+        setcount(count +1)
+    }
+    let decrement=()=>{
+        setcount(count -1)
+    }
+    return (
+    <div>
+        <h1>{count}</h1>
+        <button onClick={increment}>Increment</button>
+        <button onClick={decrement}>Decrement</button>
+    </div>
+    )
+}
+
+export default Home
+**************************************************************************************************************
+App.js
+****************************************************************************************************************
+import React from 'react'
+import Navbar from './Navbar'
+import Home from './components/Home'
+
+const App = () => { 
+  return (
+    <div>
+      <Navbar></Navbar>
+      <Home></Home>
+    </div>
+  )
+}
+export default App
+*****************************************************************************************************************
+3) like and dislike button using setcount
+*****************************************************************************************************************
+Home.jsx
+****************************************************************************************************************
+import React, { useState } from 'react'
+
+const Home = () => {
+    let [likes,setlikes]=useState(0)
+    let [dislikes,setdislikes]=useState(0)
+    let increment=()=>{
+        setlikes(likes +1)
+    }
+    let decrement=()=>{
+        setdislikes(dislikes +1)
+    }
+    return (
+    <div>
+        <h1>Likes: {likes}</h1>
+        <h1>Dislikes: {dislikes}</h1>
+        <button style={{color:"red",backgroundColor:"grey",padding:"10px",marginLeft:"10px"}} onClick={increment}>💖</button>
+        <button style={{color:"red",backgroundColor:"grey",padding:"10px",marginLeft:"10px"}} onClick={decrement}>💔</button>
+    </div>
+    )
+}
+
+export default Home
+***********************************************************************************************************************************
+4) class based example
+*************************************************************************************************************************************
+Home.jsx
+************************************************************************************************************************************
+import React, {Component} from 'react'
+
+class Home extends Component{
+    state={
+        name:"Rohit",
+        color:"black"
+    }
+    changename=()=>{
+        this.setState({name:"Ram"})
+    }
+    changecolor=()=>{
+        this.setState({color:"red"})
+    }
+    render(){
+        return(
+            <div>
+                <h1>Class Component</h1>
+                <h1 style={{color:this.state.color}}>{this.state.name}</h1>
+                <button style={{padding:"10px",backgroundColor:"black",color:"red"}} onClick={this.changename}>Change Name</button>
+                <button style={{color:"green",backgroundColor:"grey",padding:"10px"}}onClick={this.changecolor}>Change color</button>
+            </div>
+        )
+    }
+}
+
+export default Home
+******************************************************************************************************************************************
+5) using class based with constructor(recomended way):-
+********************************************************************************************************************************************
+Home.jsx
+*******************************************************************************************************************************************
+import React, {Component} from 'react'
+
+class Home extends Component{
+    constructor(){
+        super()
+        this.state={
+            name:"Rohit",
+            color:"black"
+        }
+    }
+    changename=()=>{
+        this.setState({name:"Ram"})
+    }
+    changecolor=()=>{
+        this.setState({color:"red"})
+    }
+    render(){
+        return(
+            <div>
+                <h1>Class Component</h1>
+                <h1 style={{color:this.state.color}}>{this.state.name}</h1>
+                <button style={{padding:"10px",backgroundColor:"black",color:"red"}} onClick={this.changename}>Change Name</button>
+                <button style={{color:"green",backgroundColor:"grey",padding:"10px"}}onClick={this.changecolor}>Change color</button>
+            </div>
+        )
+    }
+}
+
+export default Home

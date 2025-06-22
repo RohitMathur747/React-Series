@@ -1,0 +1,60 @@
+import React from "react";
+import { useSelector,useDispatch } from "react-redux";
+import { useState } from "react";
+import {Increment,Decrement} from "../../Redux/Action/Action";
+
+const Home=()=>{
+    let data=useSelector((state)=>state.CounterReducer)
+    let dispatch=useDispatch();
+
+    return(
+        <div>
+        <h1 className="ms-2">{data}</h1>
+        <button className="btn btn-success ms-2 py-3" onClick={()=>dispatch(Increment(1))}>Increment</button>
+        <button className="btn btn-danger ms-2 py-3" onClick={()=>dispatch(Decrement(1))}>Decrement</button>
+        </div>
+    )
+}
+
+export default Home;
+*********************************************************************************************************************
+App.js
+*********************************************************************************************************************
+import React,{useState} from 'react'
+import Home from '../src/components/Pages/Home';
+const App = () => {
+    let[toggle,settoggle]=useState(false)
+  return (
+    <div>App
+      <button onClick={()=>(settoggle(toggle))}>Toggle</button>
+      {
+        toggle?<Home/>:<h1>component unmount</h1>
+      }
+    </div>
+  )
+}
+export default App;
+*********************************************************************************************************************
+home.jsx
+*********************************************************************************************************************
+import React,{useEffect} from "react";
+
+const Home=()=>{
+
+    useEffect(()=>{
+        let timer=setInterval(() => {
+            console.log("time is coming");
+        },1000);
+        return()=>{
+            clearInterval(timer)
+            console.log("stopped");
+        }
+    },[])
+    return(
+        <div>
+            <h1>Home</h1>
+        </div>
+    )
+}
+
+export default Home;

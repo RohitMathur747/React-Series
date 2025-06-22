@@ -1,0 +1,14 @@
+1) create element or multiple element using jsx
+****************************************************************************************************************
+App.js
+*****************************************************************************************************************
+import React from 'react'
+
+
+const App = () => { 
+  let element = React.createElement("div",{id:"head"},React.createElement("h1",{},"hi i am h1 inside div"))
+  return (
+      element
+  )
+}
+export default App

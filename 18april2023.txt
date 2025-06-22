@@ -1,0 +1,37 @@
+App.js
+*******************************************************************************************************************
+import React from 'react';
+import Navbar from "../Navbar/Navbar.jsx";
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import About from './About.jsx';
+import Subscription from './Subcription.jsx';
+import Branches from './Branches.jsx';
+import Query from './Query.jsx';
+import Contact from './Contact.jsx';
+import Home from './Home.jsx';
+import Login from './AuthComponents/Login.jsx';
+import Signup from './AuthComponents/Signup.jsx';
+
+const App = () => { 
+  return (
+    <div>
+      <BrowserRouter>
+      <Navbar></Navbar>
+        <Routes>
+            <Route path='/' element={<Home/>}></Route>
+            <Route path='about' element={<About/>}>
+              <Route path='sub' element={<Subscription></Subscription>}></Route>
+              <Route path='branches' element={<Branches></Branches>}></Route>
+              <Route path='query' element={<Query></Query>}></Route>
+            </Route>
+            <Route path='/contact' element={<Contact/>}></Route>
+            <Route path='/login' element={<Login/>}></Route>
+            <Route path='/signup' element={<Signup/>}></Route>
+            <Route path="*" element={<h1>Page Not Found</h1>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
+}
+export default App
+**********************************************************************************************************************

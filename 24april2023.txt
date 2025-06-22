@@ -1,0 +1,68 @@
+1)Axios Table
+******************************************************************************************************************
+i)=>Home.js
+******************************************************************************************************************
+import React,{useEffect, useState} from "react";
+import  Axios  from "axios";
+import "./style.css";
+const Home = () => {
+    let [data , setdata] = useState([])
+    let [user,setuser] = useState({})
+
+
+    useEffect(() => {
+        console.log("useEffect is executed")
+        Axios.get("https://jsonplaceholder.typicode.com/users").then(a => setdata(a.data))
+    },[]);  
+
+    let deleteRow=(id) => {
+        console.log(id)
+        setdata(data.filter(a=>a.id!==id))
+    }
+
+    let userDetails=(user) => {
+        setuser(user)
+    }
+
+    return (
+        <div>
+            {console.log(data)} 
+            <table>
+                <thead>
+                    <tr >
+                        <td>id</td>
+                        <td>name</td>
+                        <td>username</td>
+                        <td>email</td>
+                        <td>address</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                    data.map((a)=>{
+                    console.log(a.name)
+                    return(
+                    <tr key={a.id} >
+                        <td>{a.id}</td>
+                        <td>{a.name}</td>
+                        <td>{a.username}</td>
+                        <td>{a.email}</td>
+                        <td>{a.address.city}</td>
+                        <td><button className="btn btn-danger text-light py-2" onClick={()=>deleteRow(a.id)}>Delete</button></td>
+                        <td><button className="btn btn-info text-light py-2" onClick={()=>userDetails(a)}>Details</button></td>
+                    </tr>
+                    )
+                })
+                }
+                </tbody>
+            </table>
+            <div className="card py-5 ps-4 my-4 text-center">
+                <h3 className="bg-danger py-2">{user.name}</h3>
+                <h3 className="bg-light py-2">{user.username}</h3>
+                <h3 className="bg-success py-2">{user.email}</h3>
+            </div>
+        </div>
+    )
+}
+
+export default Home;
